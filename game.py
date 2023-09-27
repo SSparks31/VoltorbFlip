@@ -41,3 +41,34 @@ class Game:
 
     def won(self):
         return self.twos == 0 and self.threes == 0
+    
+    def print(self):
+        for i in range(5):
+            values = self._board[i]
+            print(('  [{}]  ' * 5).format(*values) + str(self.line(i)).replace(' ', ''))
+        for j in range(5):
+            print(str(self.column(j)).replace(' ', '').rjust(6, ' '), end=' ')
+        print('')
+    
+    def play(self):
+        self.print()
+        while True:
+            try:
+                py, px = [int(_) - 1 for _ in input('Insira a posição: ').strip().split(' ')]
+            except:
+                print('Formato inválido!')
+                continue
+            if px not in range(5) or py not in range(5):
+                print('Posição inválida!')
+                continue
+            
+            v = self.flip(py, px)
+            self.print()
+            
+            if v == 0:
+                print('Morreu!')
+                return -1
+
+            if self.won():
+                print('Ganhou!')
+                return 0
