@@ -51,6 +51,7 @@ class Game:
         print('')
     
     def play(self):
+        print('Modo de jogar: Insira as coordenadas de linha e coluna separadas por espaço')
         self.print()
         while True:
             try:
