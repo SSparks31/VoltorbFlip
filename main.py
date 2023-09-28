@@ -1,15 +1,8 @@
 from game import Game
 
-difficulties = {
-    'fácil': [6, 16, 2, 1],
-    'médio': [8, 10, 4, 1],
-    'difícil': [12, 2, 4, 7]
-}
-
-diff = None
-while diff is None:
-    diff = difficulties.get(input('Insira a dificuldade (Fácil, Médio, Difícil): ').strip().lower(), None)
-game = Game(*diff)
+lines =   [(2, 3), (7, 2), (4, 2), (6, 1), (7, 0)]
+columns = [(10, 0), (4, 2), (3, 2), (6, 1), (3, 3)]
+game = Game(lines, columns)
 game.play()
 
 
