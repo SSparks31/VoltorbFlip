@@ -1,7 +1,7 @@
-from game import Game
+from gameAI import Game
 
-lines =   [(2, 3), (7, 2), (4, 2), (6, 1), (7, 0)]
-columns = [(10, 0), (4, 2), (3, 2), (6, 1), (3, 3)]
+lines =   [(6, 1), (1, 4), (7, 1), (7, 1), (4, 3)]
+columns = [(7, 0), (4, 2), (2, 3), (5, 3), (7, 2)]
 game = Game(lines, columns)
 game.play()
 

@@ -17,20 +17,9 @@ class Game:
     def column(self, j):
         return self._columns[j]
         
-    def mark(self, i, j):
-        if self._board[i][j] == 'X':
-            self._board[i][j] = ' '
-        else:
-            self._board[i][j] = 'X'
-
     def flip(self, i, j, val):
-        if self._board[i][j] == 'X':
-            return
         self._board[i][j] = val
 
-    def won(self):
-        return False
-    
     def print(self):
         for i in range(5):
             values = self._board[i]
@@ -48,16 +37,13 @@ class Game:
 
         try:
             while True:
-                py, px, X = [_ for _ in input('Entrada: ').strip().split(' ')]
+                py, px, val = [_ for _ in input('Entrada: ').strip().split(' ')]
                 i, j = [int(_) - 1 for _ in (py, px)]
                 if i not in range(len(self._lines)) or j not in range(len(self._columns)):
                     print('Posição inválida!')
                     continue
-                
-                if X == 'X':
-                    self.mark(i, j)
                 else:
-                    self.flip(i, j, int(X))
+                    self.flip(i, j, val)
                 self.print()
         except KeyboardInterrupt:
             pass
