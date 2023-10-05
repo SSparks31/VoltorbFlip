@@ -18,9 +18,13 @@ class Game(game.Game):
         flippedLine = sum(_ != ' ' for _ in self._board[i])
         flippedColumn = sum(self._board[_][j] != ' ' for _ in range(5))
 
-        if voltorbsLine == voltorbsFoundLine:
+        if voltorbsFoundLine + flippedLine == 4:
+            possibilitiesLine = set((pointsLine - pointsFoundLine,))
+        elif voltorbsLine == voltorbsFoundLine:
             possibilitiesLine = set(range(1, pointsLine  + flippedLine - pointsFoundLine - 3))
-        if voltorbsColumn == voltorbsFoundColumn:
+        if voltorbsFoundColumn + flippedColumn == 4:
+            possibilitiesColumn = set((pointsColumn - pointsFoundColumn,))
+        elif voltorbsColumn == voltorbsFoundColumn:
             possibilitiesColumn = set(range(1, pointsColumn + flippedColumn - pointsFoundColumn - 3))
     
         p = possibilitiesColumn.intersection(possibilitiesLine)
